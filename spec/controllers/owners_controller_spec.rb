@@ -10,7 +10,7 @@ describe "Owners Controller" do
 
     it "'/owners/new' loads form to create a new owner" do
       visit '/owners/new'
-      expect(page).to have_field('owner[name]')
+      expect(page.has_field?('owner[name]')).to eq(true)
     end
 
     it "'/owners/new' form has a checkbox for existing pets" do
@@ -23,7 +23,7 @@ describe "Owners Controller" do
 
     it "'/owners/new' form has a field for creating a new pet" do
       visit '/owners/new'
-      expect(page).to have_field('pet[name]')
+      expect(page.has_field?('owner[name]')).to eq(true)
     end
 
 
@@ -77,9 +77,9 @@ describe "Owners Controller" do
 
     it "'/owners/:id/edit' loads form to edit an owner and his pets" do
       visit "/owners/#{@owner.id}/edit"
-      expect(page).to have_field('owner[name]')
+      expect(page.has_field?('owner[name]')).to eq(true)
       expect(page.has_checked_field?(@pet.id)).to eq(true)
-      expect(page).to have_field('pet[name]')
+      expect(page.has_field?('pet[name]')).to eq(true)
     end
 
      it "edit's the owner's name" do
